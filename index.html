@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#160f0b" />
+  <title>Поставить свечу онлайн</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="intro-panel">
+      <div class="eyebrow">Тихое место для добрых мыслей</div>
+      <h1>Поставьте свечу онлайн</h1>
+      <p class="lead">
+        Выберите намерение, напишите имя и зажгите свечу. Она будет гореть две минуты.
+      </p>
+
+      <form id="candleForm" class="candle-form" novalidate>
+        <label class="field">
+          <span>Для чего поставить свечу</span>
+          <select id="purpose" name="purpose" required>
+            <option value="">Выберите намерение</option>
+            <option value="За здоровье">За здоровье</option>
+            <option value="За богатство">За богатство</option>
+            <option value="За финансы">За финансы</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Имя</span>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            maxlength="40"
+            autocomplete="name"
+            placeholder="Введите имя"
+            required
+          />
+        </label>
+
+        <button id="submitButton" class="submit-button" type="submit">
+          <span class="button-icon" aria-hidden="true">✦</span>
+          <span id="submitText">Зажечь свечу</span>
+        </button>
+
+        <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="counter-card">
+        <div>
+          <span class="counter-label">Сейчас горит</span>
+          <strong id="candleCount">0</strong>
+        </div>
+        <div class="counter-divider"></div>
+        <div>
+          <span class="counter-label">Свободных мест</span>
+          <strong id="freeCount">40</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="altar-panel" aria-label="Церковный подсвечник">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <div class="altar-heading">
+        <span>Общий подсвечник</span>
+        <small>Наведи на свечу, чтобы увидеть имя и намерение</small>
+      </div>
+
+      <div class="niche">
+        <div id="candleStage" class="candle-stage" aria-live="polite"></div>
+        <div class="bowl-rim"></div>
+        <div class="bowl-body">
+          <div class="bowl-glow"></div>
+          <div class="ornament ornament-left">✦</div>
+          <div class="ornament ornament-center">☦</div>
+          <div class="ornament ornament-right">✦</div>
+        </div>
+        <div class="pedestal">
+          <div class="pedestal-line"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <template id="candleTemplate">
+    <div class="candle" tabindex="0">
+      <div class="tooltip">
+        <strong class="tooltip-name"></strong>
+        <span class="tooltip-purpose"></span>
+        <span class="tooltip-time"></span>
+      </div>
+      <div class="flame-wrap">
+        <div class="flame-glow"></div>
+        <div class="flame"></div>
+        <div class="wick"></div>
+      </div>
+      <div class="wax">
+        <div class="wax-highlight"></div>
+        <div class="wax-drip wax-drip-one"></div>
+        <div class="wax-drip wax-drip-two"></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
